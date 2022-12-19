@@ -1,4 +1,8 @@
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Main {
@@ -23,19 +27,30 @@ class FileManagement {
     ArrayList<MyFile> files = new ArrayList<>();
 
     public FileManagement(String dir) {
-        a(dir);
+        moveAllFile(dir);
     }
 
-    void a(String dir) {
+    void moveAllFile(String dir) {
         File file = new File(dir);
         File[] tempArr = file.listFiles();
         for (int i = 0; i < tempArr.length; i++) {
             if (tempArr[i].isFile()) {
                 MyFile myFile = new MyFile(tempArr[i].getName());
                 files.add(myFile);
+                try {
+                    if (!tempArr[i].getParent().equals("C:\\Users\\ALFA\\Documents\\New folder"))
+                        Files.move(Paths.get(tempArr[i].getPath()), Paths.get("C:\\Users\\ALFA\\Documents\\New folder\\"+tempArr[i].getName()));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 size++;
             } else {
-                a(tempArr[i].getPath());
+                moveAllFile(tempArr[i].getPath());
+            }
+        }
+        for (int i = 0; i < tempArr.length; i++){
+            if (!tempArr[i].isFile()) {
+                tempArr[i].delete();
             }
         }
     }
