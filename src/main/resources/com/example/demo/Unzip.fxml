@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="390.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Unzip">
+   <children>
+      <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#f3f5f7" height="366.0" layoutX="14.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="442.0" />
+      <Label fx:id="lbl1" layoutX="20.0" layoutY="13.0" prefHeight="110.0" prefWidth="428.0" text="-Please Enter the address of the file you want to  unzip :">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_address" layoutX="30.0" layoutY="165.0" prefHeight="59.0" prefWidth="249.0" promptText="zip's address" />
+      <ImageView fx:id="pic1" fitHeight="159.0" fitWidth="215.0" layoutX="249.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="C:\Users\TAK\Downloads/pic2.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_done" layoutX="67.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#click_done" prefHeight="44.0" prefWidth="102.0" text="Done">
+         <font>
+            <Font name="Comic Sans MS Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
