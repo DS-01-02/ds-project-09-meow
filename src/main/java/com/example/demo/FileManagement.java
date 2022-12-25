@@ -19,7 +19,7 @@ public class FileManagement {
         File[] tempArr = file.listFiles();
         for (int i = 0; i < tempArr.length; i++) {
             if (tempArr[i].isFile()) {
-                MyFile1 myFile = new MyFile1(tempArr[i].getName(),tempArr[i].getParent());
+                MyFile1 myFile = new MyFile1(tempArr[i].getName(),tempArr[i].getParent(),tempArr[i].getPath());
                 files.add(myFile);
                 try {
                     if (!tempArr[i].getParent().equals("C:\\Users\\ALFA\\Documents\\New folder"))

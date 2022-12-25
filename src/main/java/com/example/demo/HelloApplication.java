@@ -26,7 +26,7 @@ public class HelloApplication extends Application {
         FileManagement fileManagement = new FileManagement("C:\\Users\\ALFA\\Documents\\New folder");
         phase_1 ph = new phase_1() ;
         ph.addtoDB();
-        ph.sortbyDate();
+        //ph.sortbyDate();
         launch();
     }
 }

@@ -65,7 +65,17 @@ public class Home1 {
 
     @FXML
     void click_sortdate(MouseEvent event) {
-
+        FileManagement fileManagement = new FileManagement("C:\\Users\\ALFA\\Documents\\New folder");
+        for (int i = 0; i <fileManagement.files .size(); i++) {
+            for (int j = i + 1; j < fileManagement.files.size(); j++)
+                if (fileManagement.files.size()> fileManagement.files.size()) {
+                    // System.out.println("==file1 size : " + files[i].getSize() + "==file2 size :"
+                    // + files[j].getSize());
+                    MyFile1 obj = fileManagement.files.get(i);
+                    fileManagement.files.set(i, fileManagement.files.get(j));
+                    fileManagement.files.set(j, obj);
+                }
+        }
     }
 
     @FXML
