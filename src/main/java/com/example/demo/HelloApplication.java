@@ -15,18 +15,20 @@ import java.sql.*;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        FileManagement f = new FileManagement("C:\\Users\\Msi\\Documents\\New folder") ;
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("SortByDate.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 450, 390);
+        stage.setTitle("File Manager");
         stage.setScene(scene);
         stage.show();
     }
 
     public static void main(String[] args) throws Exception {
-        FileManagement fileManagement = new FileManagement("C:\\Users\\ALFA\\Documents\\New folder");
+        FileManagement fileManagement = new FileManagement("C:\\Users\\Msi\\Documents\\New folder");
         phase_1 ph = new phase_1() ;
         ph.addtoDB();
-        //ph.sortbyDate();
+       // ph.sortbyDate();
         launch();
     }
 }

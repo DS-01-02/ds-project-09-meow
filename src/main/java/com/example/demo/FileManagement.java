@@ -6,7 +6,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class FileManagement {
+public class
+
+
+
+FileManagement {
     public int size = 0;
     ArrayList<MyFile1> files = new ArrayList<>();
 
@@ -22,8 +26,8 @@ public class FileManagement {
                 MyFile1 myFile = new MyFile1(tempArr[i].getName(),tempArr[i].getParent(),tempArr[i].getPath());
                 files.add(myFile);
                 try {
-                    if (!tempArr[i].getParent().equals("C:\\Users\\ALFA\\Documents\\New folder"))
-                        Files.move(Paths.get(tempArr[i].getPath()), Paths.get("C:\\Users\\ALFA\\Documents\\New folder\\"+tempArr[i].getName()));
+                    if (!tempArr[i].getParent().equals("C:\\Users\\Msi\\Documents\\New folder"))
+                        Files.move(Paths.get(tempArr[i].getPath()), Paths.get("C:\\Users\\Msi\\Documents\\New folder\\"+tempArr[i].getName()));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

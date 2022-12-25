@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -12,7 +14,7 @@ public class SortByDate {
     private Button btn_back;
 
     @FXML
-    private ListView<?> listview;
+    private ListView<String> listview;
 
     @FXML
     private Rectangle rectangle;
@@ -20,4 +22,12 @@ public class SortByDate {
     @FXML
     private ScrollBar scrollbar;
 
+    public void initialize(){
+        FileManagement fileManagement = new FileManagement("C:\\Users\\Msi\\Documents\\New folder");
+        ObservableList<String> observableList = FXCollections.observableArrayList();
+        for(MyFile1 a : fileManagement.files){
+            observableList.add(String.valueOf(a));
+        }
+        listview.setItems(observableList);
+    }
 }
