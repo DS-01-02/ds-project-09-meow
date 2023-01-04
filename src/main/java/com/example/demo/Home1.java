@@ -60,12 +60,11 @@ public class Home1 {
 
     @FXML
     void click_home(MouseEvent event) {
-
     }
 
     @FXML
     void click_sortdate(MouseEvent event) {
-        FileManagement fileManagement = new FileManagement("C:\\Users\\ALFA\\Documents\\New folder");
+        FileManagement fileManagement = new FileManagement(Unzip.dir);
         for (int i = 0; i <fileManagement.files .size(); i++) {
             for (int j = i + 1; j < fileManagement.files.size(); j++)
                 if (fileManagement.files.size()> fileManagement.files.size()) {

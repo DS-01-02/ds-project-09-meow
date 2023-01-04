@@ -7,7 +7,7 @@ public class MySqlConnection {
     String userName = "root";
     String passWord = "";
 
-    public boolean connection(String cmd) {
+    public boolean ExecuteSQL(String cmd) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, userName, passWord);

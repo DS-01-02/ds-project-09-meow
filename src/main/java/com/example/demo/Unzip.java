@@ -1,49 +1,59 @@
 package com.example.demo;
 
-        import javafx.fxml.FXML;
-        import javafx.fxml.FXMLLoader;
-        import javafx.scene.Node;
-        import javafx.scene.Parent;
-        import javafx.scene.Scene;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.Label;
-        import javafx.scene.control.TextField;
-        import javafx.scene.image.ImageView;
-        import javafx.scene.input.MouseEvent;
-        import javafx.scene.shape.Rectangle;
-        import javafx.stage.Stage;
-
-        import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 public class Unzip {
+    public static String dir;
 
-    @FXML
-    private Button btn_done;
-
-    @FXML
-    private Label lbl1;
-
-    @FXML
-    private ImageView pic1;
-
-    @FXML
-    private Rectangle rectangle;
-
-    @FXML
-    private TextField txt_address;
-
-    @FXML
-    void click_done(MouseEvent event) throws IOException {
-
-        System.out.println("DONE");
-
-        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("Menu.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(parent);
-        stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
-        stage.setTitle("File Manger");
-        stage.setScene(scene);
-        stage.show();
+    private static final int BUFFER_SIZE = 4096;
+    /**
+     * Extracts a zip file specified by the zipFilePath to a directory specified by
+     * destDirectory (will be created if does not exists)
+     * @param zipFilePath
+     * @param destDirectory
+     * @throws IOException
+     */
+    public static void unzip(String zipFilePath, String destDirectory) throws IOException {
+        File destDir = new File(destDirectory);
+        if (!destDir.exists()) {
+            destDir.mkdir();
+        }
+        ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFilePath));
+        ZipEntry entry = zipIn.getNextEntry();
+        // iterates over entries in the zip file
+        while (entry != null) {
+            String filePath = destDirectory + File.separator + entry.getName();
+            if (!entry.isDirectory()) {
+                // if the entry is a file, extracts it
+                extractFile(zipIn, filePath);
+            } else {
+                // if the entry is a directory, make the directory
+                File dir = new File(filePath);
+                dir.mkdirs();
+            }
+            zipIn.closeEntry();
+            entry = zipIn.getNextEntry();
+        }
+        zipIn.close();
     }
-
+    /**
+     * Extracts a zip entry (file entry)
+     * @param zipIn
+     * @param filePath
+     * @throws IOException
+     */
+    private static void extractFile(ZipInputStream zipIn, String filePath) throws IOException {
+        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath));
+        byte[] bytesIn = new byte[BUFFER_SIZE];
+        int read = 0;
+        while ((read = zipIn.read(bytesIn)) != -1) {
+            bos.write(bytesIn, 0, read);
+        }
+        bos.close();
+    }
 }

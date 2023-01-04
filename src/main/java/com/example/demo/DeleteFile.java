@@ -56,7 +56,7 @@ public class DeleteFile {
         stage.show();
     }
 
-    FileManagement fileManagement = new FileManagement("C:\\Users\\TAK\\Downloads\\New folder");
+    FileManagement fileManagement = new FileManagement(Unzip.dir);
 
     @FXML
     void click_delete(MouseEvent event) throws IOException {

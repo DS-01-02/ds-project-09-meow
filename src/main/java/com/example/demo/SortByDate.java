@@ -53,7 +53,7 @@ public class SortByDate {
 
     public void initialize(){
 
-        FileManagement fileManagement = new FileManagement("C:\\Users\\TAK\\Downloads\\New folder");
+        FileManagement fileManagement = new FileManagement(Unzip.dir);
 
         //سورت می شوند
         for (int i = 0; i < fileManagement.files .size(); i++) {

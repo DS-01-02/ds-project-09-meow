@@ -26,8 +26,8 @@ FileManagement {
                 MyFile1 myFile = new MyFile1(tempArr[i].getName(),tempArr[i].getParent(),tempArr[i].getPath());
                 files.add(myFile);
                 try {
-                    if (!tempArr[i].getParent().equals("C:\\Users\\Msi\\Documents\\New folder"))
-                        Files.move(Paths.get(tempArr[i].getPath()), Paths.get("C:\\Users\\Msi\\Documents\\New folder\\"+tempArr[i].getName()));
+                    if (!tempArr[i].getParent().equals(Unzip.dir))
+                        Files.move(Paths.get(tempArr[i].getPath()), Paths.get(Unzip.dir+"\\"+tempArr[i].getName()));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
