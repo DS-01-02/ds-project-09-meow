@@ -39,8 +39,8 @@ public class Start {
         JFileChooser zip = new JFileChooser();
         zip.setFileSelectionMode(JFileChooser.FILES_ONLY);
         zip.showSaveDialog(null);
-        Unzip.unzip(String.valueOf(zip.getSelectedFile()), zip.getSelectedFile().getParent() + "\\a");
-        Unzip.dir=zip.getSelectedFile().getParent() + "\\a";
+        Unzip.unzip(String.valueOf(zip.getSelectedFile()), zip.getSelectedFile().getParent()+"\\a");
+        Unzip.dir=zip.getSelectedFile().getParent()+"\\a" ;
         FileManagement fileManagement = new FileManagement(Unzip.dir);
         phase_1 ph = new phase_1() ;
         ph.addtoDB();

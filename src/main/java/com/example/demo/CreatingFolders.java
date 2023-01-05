@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -36,7 +38,9 @@ public class CreatingFolders {
             }
 
             Collections.sort(list);
-
+            for(int a : list){
+                Files.createDirectory(Path.of(Unzip.dir+a));
+            }
             return list;
         }
         catch (Exception ex)

@@ -218,7 +218,7 @@ public class AddFile {
                     observableList.add(String.valueOf(a.getName() + "." + a.getYear() + "." + a.getFormat()));
                 }
                 listview.setItems(observableList);
-                File.createTempFile(txt_name.getText() + txt_year.getText(), format, new File(txt_parent.getText()));
+                File.createTempFile(txt_name.getText() +"."+ txt_year.getText(),format, new File(txt_parent.getText()));
             }
         } else {
             Parent parent = FXMLLoader.load(HelloApplication.class.getResource("Error.fxml"));
@@ -238,5 +238,8 @@ public class AddFile {
         parent.setFileSelectionMode(JFileChooser.FILES_ONLY);
         parent.showSaveDialog(null);
         txt_parent.setText(parent.getSelectedFile().getParent());
+    }
+
+    public void pressOnBtnBack(ActionEvent actionEvent) {
     }
 }
