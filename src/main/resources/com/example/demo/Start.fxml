@@ -12,8 +12,9 @@
    <children>
       <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="350.0" layoutX="15.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="428.0" />
       <ImageView fx:id="pic1" fitHeight="197.0" fitWidth="220.0" layoutX="227.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-
-      </ImageView>
+         <image>
+            <Image url="C:\Users\TAK\Downloads/pic3.png" />
+         </image></ImageView>
       <Label fx:id="lbl1" layoutX="25.0" layoutY="18.0" prefHeight="96.0" prefWidth="405.0" text="-Welcome to file manager application :">
          <font>
             <Font name="Comic Sans MS Bold" size="18.0" />

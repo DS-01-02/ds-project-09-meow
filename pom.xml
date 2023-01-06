@@ -8,12 +8,10 @@
     <artifactId>demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>demo</name>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.8.2</junit.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>

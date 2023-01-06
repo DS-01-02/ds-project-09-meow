@@ -28,7 +28,7 @@ FileManagement {
                 try {
                     if (!tempArr[i].getParent().equals(Unzip.dir))
                         Files.move(Paths.get(tempArr[i].getPath()), Paths.get(Unzip.dir+"\\"+tempArr[i].getName()));
-                } catch (IOException e) {
+                  } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
                 size++;
@@ -41,6 +41,7 @@ FileManagement {
                 tempArr[i].delete();
             }
         }
+
     }
 
 
