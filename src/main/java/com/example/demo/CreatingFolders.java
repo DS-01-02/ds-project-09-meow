@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Connection;
@@ -12,40 +13,57 @@ import java.util.List;
 import java.util.Objects;
 
 public class CreatingFolders {
-    String url = "jdbc:mysql://localhost/files";
-    String userName = "root";
-    String passWord = "";
-    List<Integer> returnYears (String SqlCmd) {
-        try {
-            List<Integer> list = new ArrayList<>();
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection Con = DriverManager.getConnection(url, userName, passWord);
+    void returnYears(String SqlCmd) {
+        String SQLCom = "SELECT Year FROM `filelist`";
+        MySqlConnection sql = new MySqlConnection();
+        List<Integer> listYear = sql.returnYears(SQLCom);
 
-            Statement s = Con.prepareStatement(SqlCmd);
-            ResultSet rs = s.executeQuery(SqlCmd);
 
-            while(rs.next()) {
-                list.add(Integer.valueOf(rs.getString("Year")) ) ;
-            }
+        for (int i = 0; i < listYear.size(); i++) {
+            String ss = String.format("SELECT  `Format` FROM `filelist` WHERE `Year`= %d ", listYear.get(i));
+            List<String> listFormat = sql.returnFormats(ss);
 
-            for (int i=0 ; i<list.size() ; i++ ) {
-                for (int j=1 ; j< list.size() ; j++) {
-                    if (Objects.equals(list.get(i), list.get(j))){
-                        list.remove(j) ;
+
+            try {
+                //ساخت پوشه سال
+                Files.createDirectory(Path.of((Unzip.dir + listYear.get(i))));
+
+
+                boolean photo = false;
+                boolean movie = false;
+                boolean music = false;
+                boolean txt = false;
+                boolean pdf = false;
+                for (int j = 0; j < listFormat.size(); j++) {
+
+
+                    if (listFormat.get(j).equals("png") || listFormat.get(j).equals("jpeg") || listFormat.get(j).equals("jpg") ||
+                            listFormat.get(j).equals("gif") && !photo) {
+
+                        Files.createDirectory(Path.of((Unzip.dir + listYear.get(i)) + "Photo"));
+                        photo = true;
+                    } else if (listFormat.get(j).equals("mp4") || listFormat.get(j).equals("mov") || listFormat.get(j).equals("mkv") ||
+                            listFormat.get(j).equals("avl") && !movie) {
+                        Files.createDirectory(Path.of((Unzip.dir + listYear.get(i)) + "Movie"));
+                        movie = true;
+                    } else if (listFormat.get(j).equals("wav") || listFormat.get(j).equals("aiff") && !music) {
+                        Files.createDirectory(Path.of((Unzip.dir + listYear.get(i)) + "Music"));
+                        music = true;
+                    } else if (listFormat.get(j).equals("txt") && !txt) {
+                        Files.createDirectory(Path.of((Unzip.dir + listYear.get(i)) + "Text"));
+                        txt = true;
+                    } else if (listFormat.get(j).equals("pdf") && !pdf) {
+                        Files.createDirectory(Path.of((Unzip.dir + listYear.get(i)) + "PDF"));
+                        pdf = true;
+
                     }
-                }
-            }
 
-            Collections.sort(list);
-            for(int a : list){
-                Files.createDirectory(Path.of(Unzip.dir+a));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            return list;
         }
-        catch (Exception ex)
-        {
-            return null;
-        }
+
     }
 }

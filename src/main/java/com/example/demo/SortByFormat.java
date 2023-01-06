@@ -72,25 +72,25 @@ public class SortByFormat {
 
         int j=0 ;
 
-                for (int i=0 ; i<photo.size() ; i++ ,j++) {
-                    fileManagement.files.set(j,photo.get(i)) ;
-                }
+        for (int i=0 ; i<photo.size() ; i++ ,j++) {
+            fileManagement.files.set(j,photo.get(i)) ;
+        }
 
-                for (int i=0 ; i<video.size() ; i++ ,j++) {
-                    fileManagement.files.set(j,video.get(i)) ;
-                }
+        for (int i=0 ; i<video.size() ; i++ ,j++) {
+            fileManagement.files.set(j,video.get(i)) ;
+        }
 
-                for (int i=0 ; i<voice.size() ; i++,j++ ) {
-                    fileManagement.files.set(j,voice.get(i)) ;
-                }
+        for (int i=0 ; i<voice.size() ; i++,j++ ) {
+            fileManagement.files.set(j,voice.get(i)) ;
+        }
 
-                for (int i=0 ; i<txt.size() ; i++,j++ ) {
-                    fileManagement.files.set(j,txt.get(i)) ;
-                }
+        for (int i=0 ; i<txt.size() ; i++,j++ ) {
+            fileManagement.files.set(j,txt.get(i)) ;
+        }
 
-                for (int i=0 ; i<pdf.size() ; i++ ,j++ ) {
-                    fileManagement.files.set(j,pdf.get(i)) ;
-                }
+        for (int i=0 ; i<pdf.size() ; i++ ,j++ ) {
+            fileManagement.files.set(j,pdf.get(i)) ;
+        }
 
         ObservableList<String> observableList = FXCollections.observableArrayList();
         for(MyFile1 a : fileManagement.files){
