@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,7 +28,7 @@ public class CreatingFolders {
 
             try {
                 //ساخت پوشه سال
-                Files.createDirectory(Path.of((Unzip.dir + listYear.get(i))));
+                Files.createDirectory(Path.of((Unzip.dir+ "\\"+listYear.get(i))));
 
 
                 boolean photo = false;
@@ -41,20 +42,20 @@ public class CreatingFolders {
                     if (listFormat.get(j).equals("png") || listFormat.get(j).equals("jpeg") || listFormat.get(j).equals("jpg") ||
                             listFormat.get(j).equals("gif") && !photo) {
 
-                        Files.createDirectory(Path.of((Unzip.dir + listYear.get(i)) + "Photo"));
+                        Files.createDirectory(Path.of((Unzip.dir +"\\"+ listYear.get(i)) + "\\"+"Photo"));
                         photo = true;
                     } else if (listFormat.get(j).equals("mp4") || listFormat.get(j).equals("mov") || listFormat.get(j).equals("mkv") ||
                             listFormat.get(j).equals("avl") && !movie) {
-                        Files.createDirectory(Path.of((Unzip.dir + listYear.get(i)) + "Movie"));
+                        Files.createDirectory(Path.of((Unzip.dir + "\\"+listYear.get(i))+ "\\" + "Movie"));
                         movie = true;
                     } else if (listFormat.get(j).equals("wav") || listFormat.get(j).equals("aiff") && !music) {
-                        Files.createDirectory(Path.of((Unzip.dir + listYear.get(i)) + "Music"));
+                        Files.createDirectory(Path.of((Unzip.dir +"\\"+ listYear.get(i)) + "\\"+ "Music"));
                         music = true;
                     } else if (listFormat.get(j).equals("txt") && !txt) {
-                        Files.createDirectory(Path.of((Unzip.dir + listYear.get(i)) + "Text"));
+                        Files.createDirectory(Path.of((Unzip.dir + "\\"+listYear.get(i))+ "\\" + "Text"));
                         txt = true;
                     } else if (listFormat.get(j).equals("pdf") && !pdf) {
-                        Files.createDirectory(Path.of((Unzip.dir + listYear.get(i)) + "PDF"));
+                        Files.createDirectory(Path.of((Unzip.dir +  "\\"+ listYear.get(i))+"\\" + "PDF"));
                         pdf = true;
 
                     }
@@ -64,6 +65,55 @@ public class CreatingFolders {
                 e.printStackTrace();
             }
         }
+    }
+    public void movefiles(){
+        String target = null;
+       // FileManagement fm = new FileManagement(Unzip.dir);
+        for(MyFile1 a : FileManagement.files){
+            if(a.format.equals("png") || a.format.equals("jpg") || a.format.equals("jpeg")){
+                target = Unzip.dir+"\\"+a.year+"\\Photo"+"\\" + a.name+"."+a.year+"."+a.format;
+            }
+            else if(a.format.equals("mp4") || a.format.equals("mov") || a.format.equals("mkv")){
+                target = Unzip.dir+"\\"+a.year+"\\Movie"+"\\" + a.name+"."+a.year+"."+a.format;
+            }else if(a.format.equals("wav") || a.format.equals("aiff") ){
+                target = Unzip.dir+"\\"+a.year+"\\Music"+"\\" + a.name+"."+a.year+"."+a.format;
+            }else if(a.format.equals("txt")  ){
+                target = Unzip.dir+"\\"+a.year+"\\Text"+"\\" + a.name+"."+a.year+"."+a.format;
+            }else if(a.format.equals("pdf")  ){
+                target = Unzip.dir+"\\"+a.year+"\\PDF"+"\\" + a.name+"."+a.year+"."+a.format;
+            }
 
+            try {
+                System.out.println(target);
+                String source = Unzip.dir+"\\" + a.name+"."+a.year+"."+a.format;
+                System.out.println(source);
+                Files.move(Path.of(source), Path.of(target));
+            } catch (IOException e) {
+                //throw new RuntimeException(e);
+            }
+
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

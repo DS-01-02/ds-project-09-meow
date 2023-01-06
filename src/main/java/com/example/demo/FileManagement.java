@@ -12,7 +12,7 @@ public class
 
 FileManagement {
     public int size = 0;
-    ArrayList<MyFile1> files = new ArrayList<>();
+   public static ArrayList<MyFile1> files = new ArrayList<>();
 
     public FileManagement(String dir) {
         moveAllFile(dir);

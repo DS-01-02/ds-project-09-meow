@@ -55,6 +55,7 @@ public class Menu {
         String SQLCom = "SELECT Year FROM `filelist`" ;
         MySqlConnection sql = new MySqlConnection();
         cf.returnYears(SQLCom);
+        cf.movefiles();
     }
 
     @FXML
