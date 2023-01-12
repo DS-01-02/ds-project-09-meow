@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,7 +25,8 @@ interface ITree<T> {
 }
 
 public class Tree<T> implements ITree<T> {
-    public static Tree<MyFile1> tree;
+    static Tree<String> tree;
+    static ArrayList<Tree<String>> folders = new ArrayList<>();
     private T root;
     private LinkedList<ITree<T>> children;
 
