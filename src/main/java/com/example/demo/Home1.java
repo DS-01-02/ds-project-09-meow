@@ -51,35 +51,56 @@ public class Home1 {
         stage.setTitle("File Manger");
         stage.setScene(scene);
         stage.show();
-    }
 
-    @FXML
-    void click_delete(MouseEvent event) {
 
     }
 
     @FXML
-    void click_home(MouseEvent event) {
+    void click_delete(MouseEvent event) throws IOException {
+
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("DeleteFile.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(parent);
+        stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+        stage.setTitle("File Manger");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
-    void click_sortdate(MouseEvent event) {
-        FileManagement fileManagement = new FileManagement(Unzip.dir);
-        for (int i = 0; i <fileManagement.files .size(); i++) {
-            for (int j = i + 1; j < fileManagement.files.size(); j++)
-                if (fileManagement.files.size()> fileManagement.files.size()) {
-                    // System.out.println("==file1 size : " + files[i].getSize() + "==file2 size :"
-                    // + files[j].getSize());
-                    MyFile1 obj = fileManagement.files.get(i);
-                    fileManagement.files.set(i, fileManagement.files.get(j));
-                    fileManagement.files.set(j, obj);
-                }
-        }
+    void click_home(MouseEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("Menu.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(parent);
+        stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+        stage.setTitle("File Manger");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
-    void click_sortformat(MouseEvent event) {
+    void click_sortdate(MouseEvent event) throws IOException {
 
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("SortByDate.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(parent);
+        stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+        stage.setTitle("File Manger");
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    @FXML
+    void click_sortformat(MouseEvent event) throws IOException {
+
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("SortByFormat.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(parent);
+        stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+        stage.setTitle("File Manger");
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

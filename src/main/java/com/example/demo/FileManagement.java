@@ -12,7 +12,7 @@ public class
 
 FileManagement {
     public int size = 0;
-    ArrayList<MyFile1> files = new ArrayList<>();
+   public static ArrayList<MyFile1> files = new ArrayList<>();
 
     public FileManagement(String dir) {
         moveAllFile(dir);
@@ -28,7 +28,7 @@ FileManagement {
                 try {
                     if (!tempArr[i].getParent().equals(Unzip.dir))
                         Files.move(Paths.get(tempArr[i].getPath()), Paths.get(Unzip.dir+"\\"+tempArr[i].getName()));
-                } catch (IOException e) {
+                  } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
                 size++;
@@ -41,6 +41,7 @@ FileManagement {
                 tempArr[i].delete();
             }
         }
+
     }
 
 

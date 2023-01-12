@@ -65,7 +65,7 @@ public class DeleteFile {
             String ss = String.format("DELETE FROM `filelist` WHERE Name = '%s'", txt_filename.getText());
 
             MySqlConnection sql = new MySqlConnection();
-            Boolean rs = sql.ExecuteSQL(ss);
+            Boolean rs = sql.connection(ss);
 
 
             if (!rs) {
@@ -90,6 +90,7 @@ public class DeleteFile {
                     break;
                 }
             }
+
 
             ObservableList<String> observableList = FXCollections.observableArrayList();
             for (MyFile1 a : fileManagement.files) {

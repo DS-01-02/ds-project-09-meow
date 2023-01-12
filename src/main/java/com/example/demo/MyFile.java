@@ -27,6 +27,7 @@ package com.example.demo;
             this.format = dd[2];
             this.parent=parent;
             this.dir = dir;
+            System.out.println(dd[0]);
         }
 
     }
