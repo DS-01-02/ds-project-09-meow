@@ -102,8 +102,7 @@ public class AddFile {
     @FXML
     private TextField txt_year;
 
-    FileManagement fileManagement = new FileManagement(Unzip.dir);
-    String format;
+    String format = null ;
 
     @FXML
     void act_aiff(ActionEvent event) throws IOException {
@@ -178,8 +177,6 @@ public class AddFile {
 
     @FXML
     void click_back(MouseEvent event) throws IOException {
-
-
         Parent parent = FXMLLoader.load(HelloApplication.class.getResource("Home1.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(parent);
@@ -187,13 +184,12 @@ public class AddFile {
         stage.setTitle("File Manger");
         stage.setScene(scene);
         stage.show();
-
     }
 
     public void initialize() {
 
         ObservableList<String> observableList = FXCollections.observableArrayList();
-        for (MyFile1 a : fileManagement.files) {
+        for (MyFile1 a : FileManagement.files) {
             observableList.add(String.valueOf(a.getName() + "." + a.getYear() + "." + a.getFormat()));
         }
         listview.setItems(observableList);
@@ -202,25 +198,46 @@ public class AddFile {
 
     @FXML
     void pressOnBtnAdd(ActionEvent event) throws IOException {
-        if (!txt_name.getText().equals("") && !txt_year.getText().equals("") && !txt_parent.getText().equals("")) {
+        if (!txt_name.getText().equals("") && !txt_year.getText().equals("") && !txt_parent.getText().equals("") && Integer.parseInt(txt_year.getText()) < 2024 ) {
+
             //اد کردن به دیتابیس
-            if(Integer.parseInt(txt_year.getText()) > 2023){
-                //TODO
-                //invalid year error
-            }else {
                 String SQLCom = String.format("INSERT INTO filelist (Name, Year, Format, Parent) values ('%s', %s, '%s', '%s')", txt_name.getText(), Integer.valueOf(txt_year.getText()), format, txt_parent.getText());
                 MySqlConnection sql = new MySqlConnection();
                 Boolean res = sql.ExecuteSQL(SQLCom);
 
                 //
                 ObservableList<String> observableList = FXCollections.observableArrayList();
-                for (MyFile1 a : fileManagement.files) {
+                for (MyFile1 a : FileManagement.files) {
                     observableList.add(String.valueOf(a.getName() + "." + a.getYear() + "." + a.getFormat()));
                 }
+
                 listview.setItems(observableList);
-                File.createTempFile(txt_name.getText() + txt_year.getText(), format, new File(txt_parent.getText()));
-            }
-        } else {
+
+            System.out.println(format);
+
+               // File.createTempFile(txt_name.getText() +"."+ Integer.valueOf(txt_year.getText()) +"." ,format, new File(txt_parent.getText()));
+            //String.valueOf(a.getName() + "." + a.getYear() + "." + a.getFormat())
+
+             String prefix = String.valueOf( txt_name.getText()  + "." +Integer.valueOf(txt_year.getText()) + "." ) ;
+/*            File myTempFile = new File( txt_parent.getText()) , ss ) ;
+
+*/
+
+            //String prefix = "exampleFile";
+
+            // Creating a string for the suffix
+            String suffix = format ;
+
+            // Creating a File object for the directory path
+
+
+            File file = File.createTempFile(
+                    prefix, suffix,
+                    new File(
+                            txt_parent.getText()));
+
+        }
+        else {
             Parent parent = FXMLLoader.load(HelloApplication.class.getResource("Error.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(parent);

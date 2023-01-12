@@ -44,7 +44,6 @@ public class Start {
         FileManagement fileManagement = new FileManagement(Unzip.dir);
         phase_1 ph = new phase_1() ;
         ph.addtoDB();
-        FileManagement f = new FileManagement(Unzip.dir);
 
         Parent parent = FXMLLoader.load(HelloApplication.class.getResource("Menu.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
