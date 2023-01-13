@@ -59,8 +59,14 @@ public class Menu {
     }
 
     @FXML
-    void click_ph3(MouseEvent event) {
-
+    void click_ph3(MouseEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("Home3.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(parent);
+        stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+        stage.setTitle("File Manger");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

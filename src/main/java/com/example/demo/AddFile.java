@@ -104,7 +104,7 @@ public class AddFile {
     @FXML
     private TextField txt_year;
 
-    FileManagement fileManagement = new FileManagement(Unzip.dir);
+
     String format = null ;
 
     @FXML
@@ -192,7 +192,7 @@ public class AddFile {
     public void initialize() {
 
         ObservableList<String> observableList = FXCollections.observableArrayList();
-        for (MyFile1 a : fileManagement.files) {
+        for (MyFile1 a : FileManagement.files) {
             observableList.add(String.valueOf(a.getName() + "." + a.getYear() + "." + a.getFormat()));
         }
         listview.setItems(observableList);
@@ -210,7 +210,7 @@ public class AddFile {
 
                 //
                 ObservableList<String> observableList = FXCollections.observableArrayList();
-                for (MyFile1 a : fileManagement.files) {
+                for (MyFile1 a : FileManagement.files) {
                     observableList.add(String.valueOf(a.getName() + "." + a.getYear() + "." + a.getFormat()));
                 }
 
