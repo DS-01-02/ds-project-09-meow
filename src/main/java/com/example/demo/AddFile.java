@@ -216,7 +216,7 @@ public class AddFile {
 
                 listview.setItems(observableList);
 
-            System.out.println(format);
+            //System.out.println(format);
 
                // File.createTempFile(txt_name.getText() +"."+ Integer.valueOf(txt_year.getText()) +"." ,format, new File(txt_parent.getText()));
             //String.valueOf(a.getName() + "." + a.getYear() + "." + a.getFormat())
@@ -232,12 +232,12 @@ public class AddFile {
             String suffix = format ;
 
             // Creating a File object for the directory path
-
-
-            File file = File.createTempFile(
-                    prefix, suffix,
-                    new File(
-                            txt_parent.getText()));
+            File f=new File(txt_parent.getText()+"//"+txt_name.getText()+"."+txt_year.getText()+"."+format);
+            f.createNewFile();
+//            File file = File.createTempFile(
+//                    prefix, suffix,
+//                    new File(
+//                            txt_parent.getText()));
 
         }
         else {

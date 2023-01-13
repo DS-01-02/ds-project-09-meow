@@ -80,7 +80,8 @@ public class DeleteFile {
 
             for (int i = 0; i < FileManagement.files.size(); i++) {
                 if (FileManagement.files.get(i).getName().equals(txt_filename.getText())) {
-                    File file = new File(FileManagement.files.get(i).dir);
+                    File file = new File(Unzip.dir+"\\"+FileManagement.files.get(i).getName()+"."+FileManagement.files.get(i).getYear()+"."+FileManagement.files.get(i).getFormat());
+                    System.out.println(Unzip.dir+"\\"+FileManagement.files.get(i).getName()+FileManagement.files.get(i).getYear()+FileManagement.files.get(i).getFormat());
                     file.delete();
                     FileManagement.files.remove(i);
                     break;
@@ -103,6 +104,13 @@ public class DeleteFile {
             stage.setScene(scene);
             stage.show();
         }
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("Done.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(parent);
+        stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+        stage.setTitle("File Manger");
+        stage.setScene(scene);
+        stage.show();
 
     }
 

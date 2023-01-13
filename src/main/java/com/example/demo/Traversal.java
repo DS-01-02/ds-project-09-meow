@@ -32,6 +32,7 @@ public class Traversal {
     }
 
     public void initialize(){
+        System.out.println(traversal);
         traversal_lbl.setText(traversal);
     }
 

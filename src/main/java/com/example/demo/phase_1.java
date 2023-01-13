@@ -7,12 +7,12 @@ import java.nio.file.Files;
 
 public class phase_1 {
     public void addtoDB() {
-        for (int i = 0; i < FileManagement.files.size(); i++) {
+        for (MyFile1 a : FileManagement.files) {
 
-            String SQLCom = String.format("INSERT  INTO filelist (Name, Year, Format, Parent) values ('%s', %d, '%s', '%s')", FileManagement.files.get(i).getName()
-                    , FileManagement.files.get(i).getYear(), FileManagement.files.get(i).getFormat(), FileManagement.files.get(i).parent);
-            MySqlConnection sql = new MySqlConnection();
-            Boolean res = sql.connection(SQLCom);
+                String SQLCom = String.format("INSERT  INTO filelist (Name, Year, Format, Parent) values ('%s', %d, '%s', '%s')",a.getName()
+                        , a.getYear(), a.getFormat(), a.parent);
+                MySqlConnection sql = new MySqlConnection();
+                Boolean res = sql.connection(SQLCom);
 
         }
     }

@@ -78,6 +78,7 @@ public class Tree<T> implements ITree<T> {
 
     @Override
     public List<T> inorder() {
+
         return _inorder(new LinkedList<>());
     }
 

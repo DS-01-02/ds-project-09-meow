@@ -141,10 +141,12 @@ public class Home1 {
 
         //سورت می شوند
         for (int i = 0; i < FileManagement.files .size(); i++) {
-            if (FileManagement.files.get(i).getFormat().equals("png") || FileManagement.files.get(i).getFormat().equals("jpeg") || FileManagement.files.get(i).getFormat().equals("jpg") || FileManagement.files.get(i).getFormat().equals("gif") ) {
+            if (FileManagement.files.get(i).getFormat().equals("png") || FileManagement.files.get(i).getFormat().equals("jpeg") ||
+                    FileManagement.files.get(i).getFormat().equals("jpg") || FileManagement.files.get(i).getFormat().equals("gif") ) {
                 photo.add(FileManagement.files.get(i)) ;
             }
-            else if ( FileManagement.files.get(i).getFormat().equals("mp4") || FileManagement.files.get(i).getFormat().equals("mov") || FileManagement.files.get(i).getFormat().equals("mkv") || FileManagement.files.get(i).getFormat().equals("avl") ) {
+            else if ( FileManagement.files.get(i).getFormat().equals("mp4") || FileManagement.files.get(i).getFormat().equals("mov") ||
+                    FileManagement.files.get(i).getFormat().equals("mkv") || FileManagement.files.get(i).getFormat().equals("avl") ) {
                 video.add(FileManagement.files.get(i)) ;
             }
             else if ( FileManagement.files.get(i).getFormat().equals("wav") || FileManagement.files.get(i).getFormat().equals("aiff")) {
