@@ -3,6 +3,7 @@ package com.example.demo;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
@@ -27,15 +28,23 @@ FileManagement {
             if (tempArr[i].isFile()) {
                 MyFile1 myFile = new MyFile1(tempArr[i].getName(), tempArr[i].getParent(), tempArr[i].getPath());
                 parent.addSubTree(new Tree<>(tempArr[i].getName()));
-                files.add(myFile);
-                try {
-                    if (!tempArr[i].getParent().equals(Unzip.dir))
-                        Files.move(Paths.get(tempArr[i].getPath()), Paths.get(Unzip.dir + "\\" + tempArr[i].getName()));
-                } catch (IOException e) {
+                if (myFile.year < 2024) {
+                    files.add(myFile);
+                    try {
+                        if (!tempArr[i].getParent().equals(Unzip.dir))
+                            Files.move(Paths.get(tempArr[i].getPath()), Paths.get(Unzip.dir + "\\" + tempArr[i].getName()));
+                    } catch (IOException e) {
 
-                    throw new RuntimeException(e);
+                        throw new RuntimeException(e);
+                    }
+                    size++;
+                } else {
+                    try {
+                        Files.delete(Path.of(myFile.dir));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
-                size++;
             } else {
                 Tree<String> newParent = new Tree<>(tempArr[i].getName());
                 parent.addSubTree(newParent);
