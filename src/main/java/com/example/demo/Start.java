@@ -15,6 +15,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -40,7 +41,8 @@ public class Start {
         JFileChooser zip = new JFileChooser();
         zip.setFileSelectionMode(JFileChooser.FILES_ONLY);
         zip.showSaveDialog(null);
-        //Files.delete(Path.of(zip.getSelectedFile().getParent()+"\\a"));
+        if (Files.exists(Path.of( zip.getSelectedFile().getParent()+"\\a")))
+            deleteDirectory(new File(zip.getSelectedFile().getParent()+"\\a"));
 
         Unzip.unzip(String.valueOf(zip.getSelectedFile()), zip.getSelectedFile().getParent()+"\\a");
         Unzip.dir=zip.getSelectedFile().getParent()+"\\a" ;
@@ -58,5 +60,13 @@ public class Start {
 
     }
 
-
+    public static void deleteDirectory(File file)
+    {
+        for (File subfile : file.listFiles()) {
+            if (subfile.isDirectory()) {
+                deleteDirectory(subfile);
+            }
+            subfile.delete();
+        }
+    }
 }
