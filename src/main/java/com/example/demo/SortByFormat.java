@@ -48,52 +48,52 @@ public class SortByFormat {
         ArrayList<MyFile1> txt = new ArrayList<>();
         ArrayList<MyFile1> pdf = new ArrayList<>() ;
 
-        FileManagement fileManagement = new FileManagement(Unzip.dir);
 
         //سورت می شوند
-        for (int i = 0; i < fileManagement.files .size(); i++) {
-            if (fileManagement.files.get(i).getFormat().equals("png") || fileManagement.files.get(i).getFormat().equals("jpeg") || fileManagement.files.get(i).getFormat().equals("jpg") || fileManagement.files.get(i).getFormat().equals("gif") ) {
-                photo.add(fileManagement.files.get(i)) ;
+        for (int i = 0; i < FileManagement.files .size(); i++) {
+            if (FileManagement.files.get(i).getFormat().equals("png") || FileManagement.files.get(i).getFormat().equals("jpeg") || FileManagement.files.get(i).getFormat().equals("jpg") || FileManagement.files.get(i).getFormat().equals("gif") ) {
+                photo.add(FileManagement.files.get(i)) ;
             }
-            else if ( fileManagement.files.get(i).getFormat().equals("mp4") || fileManagement.files.get(i).getFormat().equals("mov") || fileManagement.files.get(i).getFormat().equals("mkv") || fileManagement.files.get(i).getFormat().equals("avl") ) {
-                video.add(fileManagement.files.get(i)) ;
+            else if ( FileManagement.files.get(i).getFormat().equals("mp4") || FileManagement.files.get(i).getFormat().equals("mov") || FileManagement.files.get(i).getFormat().equals("mkv") || FileManagement.files.get(i).getFormat().equals("avl") ) {
+                video.add(FileManagement.files.get(i)) ;
             }
-            else if ( fileManagement.files.get(i).getFormat().equals("wav") || fileManagement.files.get(i).getFormat().equals("aiff")) {
-                voice.add(fileManagement.files.get(i)) ;
+            else if ( FileManagement.files.get(i).getFormat().equals("wav") || FileManagement.files.get(i).getFormat().equals("aiff")) {
+                voice.add(FileManagement.files.get(i)) ;
             }
-            else if (fileManagement.files.get(i).getFormat().equals("txt")) {
-                txt.add(fileManagement.files.get(i)) ;
+            else if (FileManagement.files.get(i).getFormat().equals("txt")) {
+                txt.add(FileManagement.files.get(i)) ;
             }
-            else if (fileManagement.files.get(i).getFormat().equals("pdf")) {
-                pdf.add(fileManagement.files.get(i)) ;
+            else if (FileManagement.files.get(i).getFormat().equals("pdf")) {
+                pdf.add(FileManagement.files.get(i)) ;
             }
         }
 
 
         int j=0 ;
 
-                for (int i=0 ; i<photo.size() ; i++ ,j++) {
-                    fileManagement.files.set(j,photo.get(i)) ;
-                }
+        for (int i=0 ; i<photo.size() ; i++ ,j++) {
+            FileManagement.files.set(j,photo.get(i)) ;
+        }
 
-                for (int i=0 ; i<video.size() ; i++ ,j++) {
-                    fileManagement.files.set(j,video.get(i)) ;
-                }
+        for (int i=0 ; i<video.size() ; i++ ,j++) {
+            FileManagement.files.set(j,video.get(i)) ;
+        }
 
-                for (int i=0 ; i<voice.size() ; i++,j++ ) {
-                    fileManagement.files.set(j,voice.get(i)) ;
-                }
+        for (int i=0 ; i<voice.size() ; i++,j++ ) {
+            FileManagement.files.set(j,voice.get(i)) ;
+        }
 
-                for (int i=0 ; i<txt.size() ; i++,j++ ) {
-                    fileManagement.files.set(j,txt.get(i)) ;
-                }
+        for (int i=0 ; i<txt.size() ; i++,j++ ) {
+            FileManagement.files.set(j,txt.get(i)) ;
+        }
 
-                for (int i=0 ; i<pdf.size() ; i++ ,j++ ) {
-                    fileManagement.files.set(j,pdf.get(i)) ;
-                }
+        for (int i=0 ; i<pdf.size() ; i++ ,j++ ) {
+            FileManagement.files.set(j,pdf.get(i)) ;
+
+        }
 
         ObservableList<String> observableList = FXCollections.observableArrayList();
-        for(MyFile1 a : fileManagement.files){
+        for(MyFile1 a : FileManagement.files){
             observableList.add(String.valueOf(a.getName()+"."+a.getYear()+"."+a.getFormat()));
         }
         listview.setItems(observableList);

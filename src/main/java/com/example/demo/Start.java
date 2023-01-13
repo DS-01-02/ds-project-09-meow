@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
 
@@ -39,12 +40,13 @@ public class Start {
         JFileChooser zip = new JFileChooser();
         zip.setFileSelectionMode(JFileChooser.FILES_ONLY);
         zip.showSaveDialog(null);
-        Unzip.unzip(String.valueOf(zip.getSelectedFile()), zip.getSelectedFile().getParent() + "\\a");
-        Unzip.dir=zip.getSelectedFile().getParent() + "\\a";
+        //Files.delete(Path.of(zip.getSelectedFile().getParent()+"\\a"));
+
+        Unzip.unzip(String.valueOf(zip.getSelectedFile()), zip.getSelectedFile().getParent()+"\\a");
+        Unzip.dir=zip.getSelectedFile().getParent()+"\\a" ;
         FileManagement fileManagement = new FileManagement(Unzip.dir);
         phase_1 ph = new phase_1() ;
         ph.addtoDB();
-        FileManagement f = new FileManagement(Unzip.dir);
 
         Parent parent = FXMLLoader.load(HelloApplication.class.getResource("Menu.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -14,9 +14,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class DeleteFile {
 
@@ -56,7 +53,6 @@ public class DeleteFile {
         stage.show();
     }
 
-    FileManagement fileManagement = new FileManagement(Unzip.dir);
 
     @FXML
     void click_delete(MouseEvent event) throws IOException {
@@ -65,7 +61,7 @@ public class DeleteFile {
             String ss = String.format("DELETE FROM `filelist` WHERE Name = '%s'", txt_filename.getText());
 
             MySqlConnection sql = new MySqlConnection();
-            Boolean rs = sql.ExecuteSQL(ss);
+            Boolean rs = sql.connection(ss);
 
 
             if (!rs) {
@@ -82,17 +78,18 @@ public class DeleteFile {
             // حذف از فولدر
 
 
-            for (int i = 0; i < fileManagement.files.size(); i++) {
-                if (fileManagement.files.get(i).getName().equals(txt_filename.getText())) {
-                    File file = new File(fileManagement.files.get(i).dir);
+            for (int i = 0; i < FileManagement.files.size(); i++) {
+                if (FileManagement.files.get(i).getName().equals(txt_filename.getText())) {
+                    File file = new File(FileManagement.files.get(i).dir);
                     file.delete();
-                    fileManagement.files.remove(i);
+                    FileManagement.files.remove(i);
                     break;
                 }
             }
 
+
             ObservableList<String> observableList = FXCollections.observableArrayList();
-            for (MyFile1 a : fileManagement.files) {
+            for (MyFile1 a : FileManagement.files) {
                 observableList.add(String.valueOf(a.getName() + "." + a.getYear() + "." + a.getFormat()));
             }
             listview.setItems(observableList);
@@ -112,7 +109,7 @@ public class DeleteFile {
     public void initialize(){
 
         ObservableList<String> observableList = FXCollections.observableArrayList();
-        for(MyFile1 a : fileManagement.files){
+        for(MyFile1 a : FileManagement.files){
             observableList.add(String.valueOf(a.getName()+"."+a.getYear()+"."+a.getFormat()));
         }
         listview.setItems(observableList);

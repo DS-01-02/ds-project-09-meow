@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="430.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Home3">
+    <children>
+        <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="397.0" layoutX="14.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="522.0" />
+        <Label fx:id="lbl1" layoutX="26.0" layoutY="39.0" prefHeight="38.0" prefWidth="428.0" text="-Which traversals do you want to use ?">
+            <font>
+                <Font name="Comic Sans MS Bold" size="21.0" />
+            </font>
+        </Label>
+        <ScrollPane layoutX="26.0" layoutY="246.0" prefHeight="106.0" prefWidth="497.0">
+            <content>
+                <AnchorPane fx:id="scrpane" minHeight="0.0" minWidth="0.0" prefHeight="103.0" prefWidth="498.0">
+                    <children>
+                        <ListView fx:id="listview" onMouseClicked="#click_folder" prefHeight="94.0" prefWidth="498.0" />
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+        <Button fx:id="btn_inorder" layoutX="37.0" layoutY="116.0" mnemonicParsing="false" onMouseClicked="#click_inorder" prefHeight="38.0" prefWidth="108.0" text="Inorder">
+            <font>
+                <Font name="Comic Sans MS Bold" size="18.0" />
+            </font>
+        </Button>
+        <Button fx:id="btn_preorder" layoutX="215.0" layoutY="116.0" mnemonicParsing="false" onMouseClicked="#click_preorder" prefHeight="38.0" prefWidth="108.0" text="Preorder">
+            <font>
+                <Font name="Comic Sans MS Bold" size="18.0" />
+            </font>
+        </Button>
+        <Button fx:id="btn_postorder" layoutX="387.0" layoutY="116.0" mnemonicParsing="false" onMouseClicked="#click_postorder" text="Postorder">
+            <font>
+                <Font name="Comic Sans MS Bold" size="18.0" />
+            </font>
+        </Button>
+        <Button fx:id="btn_home" layoutX="467.0" layoutY="369.0" mnemonicParsing="false" onMouseClicked="#click_home" text="Home">
+            <font>
+                <Font name="Comic Sans MS Bold" size="14.0" />
+            </font>
+        </Button>
+        <Label fx:id="lbl_action" layoutX="24.0" layoutY="191.0" prefHeight="38.0" prefWidth="498.0" text="Folders :">
+            <font>
+                <Font name="Comic Sans MS Bold" size="20.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

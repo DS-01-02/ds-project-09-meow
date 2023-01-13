@@ -9,6 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="435.0" prefWidth="1199.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Home1">
+
    <children>
       <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="407.0" layoutX="395.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="430.0" />
       <Label fx:id="lbl1" layoutX="407.0" layoutY="30.0" prefHeight="11.0" prefWidth="406.0" text="-Welcome to the First phase of the project. ">
@@ -32,6 +33,7 @@
          </font>
       </Button>
       <Button layoutX="413.0" layoutY="218.0" mnemonicParsing="false" onMouseClicked="#click_delete" prefHeight="32.0" prefWidth="244.0" text="3-Delete the file.            ">
+
          <font>
             <Font name="Comic Sans MS Bold" size="15.0" />
          </font>

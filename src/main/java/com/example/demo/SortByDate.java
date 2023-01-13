@@ -53,21 +53,21 @@ public class SortByDate {
 
     public void initialize(){
 
-        FileManagement fileManagement = new FileManagement(Unzip.dir);
+
 
         //سورت می شوند
-        for (int i = 0; i < fileManagement.files .size(); i++) {
-            for (int j = i + 1; j < fileManagement.files.size(); j++)
-                if (fileManagement.files.get(i).getYear() > fileManagement.files.get(j).getYear()) {
-                    MyFile1 obj = fileManagement.files.get(i);
-                    fileManagement.files.set(i, fileManagement.files.get(j));
-                    fileManagement.files.set(j, obj);
+        for (int i = 0; i < FileManagement.files .size(); i++) {
+            for (int j = i + 1; j < FileManagement.files.size(); j++)
+                if (FileManagement.files.get(i).getYear() > FileManagement.files.get(j).getYear()) {
+                    MyFile1 obj = FileManagement.files.get(i);
+                    FileManagement.files.set(i, FileManagement.files.get(j));
+                    FileManagement.files.set(j, obj);
                 }
         }
 
         //
         ObservableList<String> observableList = FXCollections.observableArrayList();
-        for(MyFile1 a : fileManagement.files){
+        for(MyFile1 a : FileManagement.files){
             observableList.add(String.valueOf(a.getName()+"."+a.getYear()+"."+a.getFormat()));
         }
         listview.setItems(observableList);

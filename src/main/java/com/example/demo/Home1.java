@@ -83,10 +83,13 @@ public class Home1 {
         stage.setTitle("File Manger");
         stage.setScene(scene);
         stage.show();
+
+
     }
 
     @FXML
     void click_delete(MouseEvent event) throws IOException {
+
         Parent parent = FXMLLoader.load(HelloApplication.class.getResource("DeleteFile.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(parent);
@@ -193,6 +196,14 @@ public class Home1 {
     @FXML
     void click_redo(MouseEvent event) {
 
+
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("SortByFormat.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(parent);
+        stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+        stage.setTitle("File Manger");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

@@ -12,6 +12,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Menu {
 
@@ -50,12 +51,22 @@ public class Menu {
 
     @FXML
     void click_ph2(MouseEvent event) {
-
+        CreatingFolders cf = new CreatingFolders();
+        String SQLCom = "SELECT Year FROM `filelist`" ;
+        MySqlConnection sql = new MySqlConnection();
+        cf.returnYears(SQLCom);
+        cf.movefiles();
     }
 
     @FXML
-    void click_ph3(MouseEvent event) {
-
+    void click_ph3(MouseEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("Home3.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(parent);
+        stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+        stage.setTitle("File Manger");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
