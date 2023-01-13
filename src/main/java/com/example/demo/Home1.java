@@ -71,8 +71,6 @@ public class Home1 {
     @FXML
     private AnchorPane scr2;
 
-    FileManagement fileManagement3 = new FileManagement(Unzip.dir);
-
     @FXML
     void click_add(MouseEvent event) throws IOException {
 
@@ -113,21 +111,20 @@ public class Home1 {
     @FXML
     void click_sortdate(MouseEvent event) {
         lbl_action.setText("Files sorted by their date :");
-        FileManagement fileManagement2 = new FileManagement(Unzip.dir);
 
         //سورت می شوند
-        for (int i = 0; i < fileManagement2.files .size(); i++) {
-            for (int j = i + 1; j < fileManagement2.files.size(); j++)
-                if (fileManagement2.files.get(i).getYear() > fileManagement2.files.get(j).getYear()) {
-                    MyFile1 obj = fileManagement2.files.get(i);
-                    fileManagement2.files.set(i, fileManagement2.files.get(j));
-                    fileManagement2.files.set(j, obj);
+        for (int i = 0; i < FileManagement.files .size(); i++) {
+            for (int j = i + 1; j < FileManagement.files.size(); j++)
+                if (FileManagement.files.get(i).getYear() > FileManagement.files.get(j).getYear()) {
+                    MyFile1 obj = FileManagement.files.get(i);
+                    FileManagement.files.set(i, FileManagement.files.get(j));
+                    FileManagement.files.set(j, obj);
                 }
         }
 
         //
         ObservableList<String> observableList = FXCollections.observableArrayList();
-        for(MyFile1 a : fileManagement2.files){
+        for(MyFile1 a : FileManagement.files){
             observableList.add(String.valueOf(a.getName()+"."+a.getYear()+"."+a.getFormat()));
         }
         list_action.setItems(observableList);
@@ -142,24 +139,22 @@ public class Home1 {
         ArrayList<MyFile1> txt = new ArrayList<>();
         ArrayList<MyFile1> pdf = new ArrayList<>() ;
 
-        FileManagement fileManagement = new FileManagement(Unzip.dir);
-
         //سورت می شوند
-        for (int i = 0; i < fileManagement.files .size(); i++) {
-            if (fileManagement.files.get(i).getFormat().equals("png") || fileManagement.files.get(i).getFormat().equals("jpeg") || fileManagement.files.get(i).getFormat().equals("jpg") || fileManagement.files.get(i).getFormat().equals("gif") ) {
-                photo.add(fileManagement.files.get(i)) ;
+        for (int i = 0; i < FileManagement.files .size(); i++) {
+            if (FileManagement.files.get(i).getFormat().equals("png") || FileManagement.files.get(i).getFormat().equals("jpeg") || FileManagement.files.get(i).getFormat().equals("jpg") || FileManagement.files.get(i).getFormat().equals("gif") ) {
+                photo.add(FileManagement.files.get(i)) ;
             }
-            else if ( fileManagement.files.get(i).getFormat().equals("mp4") || fileManagement.files.get(i).getFormat().equals("mov") || fileManagement.files.get(i).getFormat().equals("mkv") || fileManagement.files.get(i).getFormat().equals("avl") ) {
-                video.add(fileManagement.files.get(i)) ;
+            else if ( FileManagement.files.get(i).getFormat().equals("mp4") || FileManagement.files.get(i).getFormat().equals("mov") || FileManagement.files.get(i).getFormat().equals("mkv") || FileManagement.files.get(i).getFormat().equals("avl") ) {
+                video.add(FileManagement.files.get(i)) ;
             }
-            else if ( fileManagement.files.get(i).getFormat().equals("wav") || fileManagement.files.get(i).getFormat().equals("aiff")) {
-                voice.add(fileManagement.files.get(i)) ;
+            else if ( FileManagement.files.get(i).getFormat().equals("wav") || FileManagement.files.get(i).getFormat().equals("aiff")) {
+                voice.add(FileManagement.files.get(i)) ;
             }
-            else if (fileManagement.files.get(i).getFormat().equals("txt")) {
-                txt.add(fileManagement.files.get(i)) ;
+            else if (FileManagement.files.get(i).getFormat().equals("txt")) {
+                txt.add(FileManagement.files.get(i)) ;
             }
-            else if (fileManagement.files.get(i).getFormat().equals("pdf")) {
-                pdf.add(fileManagement.files.get(i)) ;
+            else if (FileManagement.files.get(i).getFormat().equals("pdf")) {
+                pdf.add(FileManagement.files.get(i)) ;
             }
         }
 
@@ -167,34 +162,34 @@ public class Home1 {
         int j=0 ;
 
         for (int i=0 ; i<photo.size() ; i++ ,j++) {
-            fileManagement.files.set(j,photo.get(i)) ;
+            FileManagement.files.set(j,photo.get(i)) ;
         }
 
         for (int i=0 ; i<video.size() ; i++ ,j++) {
-            fileManagement.files.set(j,video.get(i)) ;
+            FileManagement.files.set(j,video.get(i)) ;
         }
 
         for (int i=0 ; i<voice.size() ; i++,j++ ) {
-            fileManagement.files.set(j,voice.get(i)) ;
+            FileManagement.files.set(j,voice.get(i)) ;
         }
 
         for (int i=0 ; i<txt.size() ; i++,j++ ) {
-            fileManagement.files.set(j,txt.get(i)) ;
+            FileManagement.files.set(j,txt.get(i)) ;
         }
 
         for (int i=0 ; i<pdf.size() ; i++ ,j++ ) {
-            fileManagement.files.set(j,pdf.get(i)) ;
+            FileManagement.files.set(j,pdf.get(i)) ;
         }
 
         ObservableList<String> observableList = FXCollections.observableArrayList();
-        for(MyFile1 a : fileManagement.files){
+        for(MyFile1 a : FileManagement.files){
             observableList.add(String.valueOf(a.getName()+"."+a.getYear()+"."+a.getFormat()));
         }
         list_action.setItems(observableList);
     }
 
     @FXML
-    void click_redo(MouseEvent event) {
+    void click_redo(MouseEvent event) throws IOException {
 
 
         Parent parent = FXMLLoader.load(HelloApplication.class.getResource("SortByFormat.fxml"));
@@ -214,7 +209,7 @@ public class Home1 {
     public void initialize(){
 
         ObservableList<String> observableList = FXCollections.observableArrayList();
-        for(MyFile1 a : fileManagement3.files){
+        for(MyFile1 a : FileManagement.files){
             observableList.add(String.valueOf(a.getName()+"."+a.getYear()+"."+a.getFormat()));
         }
         list_main.setItems(observableList);
