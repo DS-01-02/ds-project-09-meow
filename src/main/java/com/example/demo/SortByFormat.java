@@ -89,6 +89,7 @@ public class SortByFormat {
 
         for (int i=0 ; i<pdf.size() ; i++ ,j++ ) {
             FileManagement.files.set(j,pdf.get(i)) ;
+
         }
 
         ObservableList<String> observableList = FXCollections.observableArrayList();

@@ -18,6 +18,7 @@ public class phase_1 {
             else {
                 FileManagement.files.remove(i);
                 File file = new File(FileManagement.files.get(i).dir);
+
                 file.delete();
             }
         }

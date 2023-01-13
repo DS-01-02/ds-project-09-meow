@@ -10,6 +10,7 @@ public class
 
 
 FileManagement {
+
     public static int size = 0;
     public static ArrayList<MyFile1> files = new ArrayList<>();
 
@@ -31,6 +32,7 @@ FileManagement {
                     if (!tempArr[i].getParent().equals(Unzip.dir))
                         Files.move(Paths.get(tempArr[i].getPath()), Paths.get(Unzip.dir + "\\" + tempArr[i].getName()));
                 } catch (IOException e) {
+
                     throw new RuntimeException(e);
                 }
                 size++;

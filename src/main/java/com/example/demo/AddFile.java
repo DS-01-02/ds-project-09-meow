@@ -22,6 +22,8 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class AddFile {
 
@@ -101,6 +103,7 @@ public class AddFile {
 
     @FXML
     private TextField txt_year;
+
 
     String format = null ;
 
@@ -203,7 +206,7 @@ public class AddFile {
             //اد کردن به دیتابیس
                 String SQLCom = String.format("INSERT INTO filelist (Name, Year, Format, Parent) values ('%s', %s, '%s', '%s')", txt_name.getText(), Integer.valueOf(txt_year.getText()), format, txt_parent.getText());
                 MySqlConnection sql = new MySqlConnection();
-                Boolean res = sql.ExecuteSQL(SQLCom);
+                Boolean res = sql.connection(SQLCom);
 
                 //
                 ObservableList<String> observableList = FXCollections.observableArrayList();

@@ -12,6 +12,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Menu {
 
@@ -50,7 +51,11 @@ public class Menu {
 
     @FXML
     void click_ph2(MouseEvent event) {
-
+        CreatingFolders cf = new CreatingFolders();
+        String SQLCom = "SELECT Year FROM `filelist`" ;
+        MySqlConnection sql = new MySqlConnection();
+        cf.returnYears(SQLCom);
+        cf.movefiles();
     }
 
     @FXML
